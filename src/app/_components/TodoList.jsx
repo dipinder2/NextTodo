@@ -1,3 +1,4 @@
+import Task from "./Task";
 
 export default function TodoList({tasks}) {
     return (
@@ -7,19 +8,14 @@ export default function TodoList({tasks}) {
                 {/* head */}
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Favorite Color</th>
+                    <th>Id</th>
+                    <th>Task</th>
                   </tr>
                 </thead>
                 <tbody>
                   {/* row 1 */}
                   {
-                    tasks.map(task=>{
-                     return ( <tr key={task.id}>
-                        <td>{task.id}</td>
-                        <td>{task.text}</td>
-                      </tr>)
-                    })
+                    tasks.map(task=> <Task task={task}/>)
                   }
                 </tbody>
               </table>
