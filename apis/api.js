@@ -7,20 +7,24 @@ export const getAllTodos = async () =>{
 }
 
 export const addTodo = async (todo) =>{
-    try{
-        fetch(`${baseUrl}/tasks`,{
-            method: "POST",
-            body: JSON.stringify(todo),
-            headers: 
-            {
-                "Content-Type": "application/json"
-            }
-        }).then()
-        .catch(error=>res.json({"err":"401"}))
-    }catch(e){
-        res.status(401).send({"err":e.message})
-    }
 
-    const newTodo = await res.json()
-    return newTodo
+    fetch(`${baseUrl}/tasks`,{
+        method: "POST",
+        body: JSON.stringify(todo),
+        headers: 
+        {
+            "Content-Type": "application/json"
+        }
+    }).then(newItem=>res.json(newItem))
+    .catch(error=>res.json({"err":"err"}))
+}
+export const deleteTodo = async (id) =>{
+
+    fetch(`${baseUrl}/tasks/${id}`,{
+        method: "DELETE",
+        headers: 
+        {
+            "Content-Type": "application/json"
+        }
+    })
 }

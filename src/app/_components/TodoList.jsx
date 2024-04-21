@@ -8,8 +8,8 @@ export default function TodoList({tasks}) {
                 {/* head */}
                 <thead>
                   <tr>
-                    <th>Id</th>
                     <th>Task</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
