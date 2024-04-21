@@ -15,13 +15,12 @@ export const addTodo = async (todo) =>{
         {
             "Content-Type": "application/json"
         }
-    }).then(newItem=>res.json(newItem))
-    .catch(error=>res.json({"err":"err"}))
+    })
     return newItem
 }
 export const deleteTodo = async (id) =>{
 
-    fetch(`${baseUrl}/tasks/${id}`,{
+    return fetch(`${baseUrl}/tasks/${id}`,{
         method: "DELETE",
         headers: 
         {

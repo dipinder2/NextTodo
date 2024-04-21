@@ -33,7 +33,7 @@ export default function AddTask() {
           <input name="text" size="20" value={task.text} placeholder="task" onChange={e=>handleChange(e)} type="text"/>
         </form>
 <br/>
-       <button onClick={handleSubmit} className="btn btn-primary w-full">
+       <button onClick={handleSubmit} className="btn btn-lg btn-ghost">
             Add new Task
             <AiOutlinePlus size={30}/>
         </button>
