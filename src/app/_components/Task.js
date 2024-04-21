@@ -1,21 +1,20 @@
-'use client'
-import { useState } from "react";
-import { deleteTodo } from "../../../apis/api"
+"use client"
+import {updateTodo } from "../../../apis/api"
 import { useRouter } from "next/navigation";
 export default async function Task({task}){
   const Router = useRouter()
-  const [checked,setChecked] = useState(false)
-  async function handleDelete(e){
+  function handleDelete(e){
     e.preventDefault()
-    deleteTodo(task.id)
-    await setChecked(true)
-    console.log(checked)
+    updateTodo(task.id.toString())
     Router.refresh()
   }
 
 
     return (<tr key={task.id}>
-        <td>{task.text}</td>
-        <td><input type="checkbox" checked={checked} onChange={handleDelete}/></td>
+        <td 
+        className={task.completed==true?"line-through":""}>
+          {task.text}</td>
+        <td><input type="checkbox" 
+         onChange={handleDelete} checked={task.completed==true?true:false} disable={task.completed?true:false}/></td>
       </tr>)
 }

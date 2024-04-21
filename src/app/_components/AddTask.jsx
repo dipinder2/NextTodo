@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 
 export default function AddTask() {
     const [task,setTask] = useState({
-      text:""
+      text:"",
+      completed:false
     })
     const Router = useRouter()
    function handleChange(e){
@@ -20,9 +21,9 @@ export default function AddTask() {
       e.preventDefault()
       let id = await uuidv4().toString()
       if(task.text=="")return
-      await setTask({...task, ["id"]:id})
-      addTodo(task)
-      setTask({text:""})
+      await setTask({...task, ["id"]:id,["completed"]:false})
+      await addTodo(task)
+      setTask({text:"", completed:false})
       Router.refresh()
       return
     }

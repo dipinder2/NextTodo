@@ -8,7 +8,7 @@ export const getAllTodos = async () =>{
 
 export const addTodo = async (todo) =>{
 
-    fetch(`${baseUrl}/tasks`,{
+    const newItem = await fetch(`${baseUrl}/tasks`,{
         method: "POST",
         body: JSON.stringify(todo),
         headers: 
@@ -17,6 +17,7 @@ export const addTodo = async (todo) =>{
         }
     }).then(newItem=>res.json(newItem))
     .catch(error=>res.json({"err":"err"}))
+    return newItem
 }
 export const deleteTodo = async (id) =>{
 
@@ -27,4 +28,19 @@ export const deleteTodo = async (id) =>{
             "Content-Type": "application/json"
         }
     })
+}
+export const updateTodo = async (id) =>{
+    fetch(`${baseUrl}/tasks/${id}`,{
+        method: "PATCH",
+        body:JSON.stringify({
+            "id":id,
+            "completed":true,
+        })
+        ,
+        headers: 
+        {
+            "Content-Type": "application/json"
+        }
+    },{cache:"no-store"})
+
 }
