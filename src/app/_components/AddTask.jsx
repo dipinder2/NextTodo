@@ -1,17 +1,15 @@
 "use client"
 import { AiOutlinePlus } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { addTodo } from "../../../apis/api";
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from "next/navigation";
+import { MainContext } from "./MainComponent";
 
 export default function AddTask() {
-    const [task,setTask] = useState({
-      text:"",
-      completed:false
-    })
-    const Router = useRouter()
-   function handleChange(e){
+  const {task,setTask,Router} = useContext(MainContext)
+   
+  function handleChange(e){
       e.preventDefault()
       const {name,value} = e.target
       setTask({...task,[name]:value})
